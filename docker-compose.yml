@@ -1,0 +1,31 @@
+version: '3.4'
+
+services:
+  backend:
+    build: 
+      context: .
+      dockerfile: server.dockerfile
+    depends_on:
+      - postgres
+    ports:
+    - 3001:3001
+  postgres:
+    image: postgres:15.2-alpine3.17
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=cats
+    volumes:
+    - postgres-data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+  adminer:
+    image: adminer
+    ports:
+      - 8080:8080
+    depends_on:
+      - postgres
+
+volumes:
+  postgres-data:
+    driver: local
