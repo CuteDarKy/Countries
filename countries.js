@@ -10,11 +10,11 @@ const getOne = (id) => {
 }
 
 const create = (country) => {
-    return db.none('INSERT INTO countries(country_name, capital) VALUES(${owner}, ${country_name})', country)
+    return db.none('INSERT INTO countries(country_name, capital) VALUES(${country_name}, ${capital})', country)
 }
 
 const update = (country) => {
-    return db.none('UPDATE TABLE countries SET capital=${capitals}, country_name=${country_name} WHERE country_id=${id}', country)
+    return db.none('UPDATE TABLE countries SET capital=${capital}, country_name=${country_name} WHERE country_id=${id}', country)
 }
 
 const deleteCountry = (id) => {
