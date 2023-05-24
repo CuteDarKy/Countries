@@ -25,7 +25,7 @@ app.get('/HW/countries', function (res) {
     })
 })
 
-app.get('HW/countries/:id', function (req, res)  {
+app.get('/HW/countries/:id', function (req, res)  {
     const id = req.params.id
     const countries = countries.getOne(id).then(function (data) {
         res.json(data)
@@ -36,7 +36,7 @@ app.get('HW/countries/:id', function (req, res)  {
     })
 })
 
-app.delete('HW/countries/:id', function (req, res)  {
+app.delete('/HW/countries/:id', function (req, res)  {
     const id = req.params.id
     const countries = countries.deleteCountry(id).then(function () {
         res.status(200).send('Deleted')
@@ -47,7 +47,7 @@ app.delete('HW/countries/:id', function (req, res)  {
     })
 })
 
-app.post('HW/countries', function (req, res)  {
+app.post('/HW/countries', function (req, res)  {
     if(!req.body) return response.sendStatus(400);
     const countries = countries.create(req.body).then(function () {
         res.status(200).send('Created')
@@ -58,7 +58,7 @@ app.post('HW/countries', function (req, res)  {
     });
 })
 
-app.put('HW/countries', function (req, res)  {
+app.put('/HW/countries', function (req, res)  {
     if(!req.body) return response.sendStatus(400);
     const countries = countries.create(req.body).then(function () {
         res.status(200).send('Updated')
